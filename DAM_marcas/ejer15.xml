@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitio>
+    <name>WEB</name>
+    <paginas>MAIN</paginas>
+    <rutas>rutas</rutas>
+    <titulo>titulo</titulo>
+    <secciones>secciones</secciones>
+    <enlaces>enlaces</enlaces>
+</sitio>

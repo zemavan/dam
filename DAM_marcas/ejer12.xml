@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo_peliculas>
+    <pelicula nombre="El Padrino">
+        <id>1234</id>
+        <titulo>El Padrino</titulo>
+        <director>Francis Ford Coppola</director>
+    </pelicula>
+</catalogo_peliculas>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumnos>
+    <alumno id="1">
+        <nombre>Juan</nombre>
+        <apellido>Garcia</apellido>
+        <edad>20</edad>
+    </alumno>
+    
+    <alumno_id>"2"</alumno_id>
+    <nombre>Maria</nombre>
+    <apellido>Garcia</apellido>
+    <edad>20</edad>
+</alumnos>

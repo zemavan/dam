@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app>
+    <name>JUEGO</name>
+    <version>1234</version>
+    <pantallas>pantallas</pantallas>
+    <permisos>permisos</permisos>
+    <desarrollador>desarrollador</desarrollador>
+    <plataforma>plataforma</plataforma>
+</app>
