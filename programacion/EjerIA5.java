@@ -20,6 +20,27 @@ class EjerIA5 {
 	//
 	// Это уже очень близко к минам.
 
+	Random ran = new Random();
+	Scanner sc = new Scanner(System.in);
+
+	System.out.println("Rows: ");
+	int row = sc.nextInt();
+
+	System.out.println("Columns: ");
+	int col = sc.nextInt();
+
+	int [][] grid = new int [row][col];
+
+	for(int i = 0; i<row; i++)
+	{
+	    for(int j = 0; j < col; j++)
+	{
+	    grid[i][j] = ran.nextInt(2);
+		System.out.print(grid[i][j] + " ");
+	}
+	System.out.println("");
+	}
+
     }
 
 }
