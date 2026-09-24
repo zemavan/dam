@@ -18,7 +18,7 @@ class DoubleVectorRandint {
 	int [][] grid = new int [inputRows][inputColumns];
 	int rowRandPosition = random.nextInt(inputRows);
 	int columnsRandPosition = random.nextInt(inputColumns);
-	grid[rowRandPosition][columnsRandPosition] = 1;
+	grid[rowRandPosition][columnsRandPosition] = bombValue;
 
 	for(int i = 0; i<inputRows; i++)
 	{
