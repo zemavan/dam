@@ -4,23 +4,97 @@ import java.util.Scanner;
 class EjerClass2{
 	public static void main(String[] arguments)
 	{
-	//Dado un numero  N  mostrar los  N  primeros numeros de la serie Fibonacci  (1,1,2,3,5,8,13,21)     por ejemplo que
+	//Dado un numero  N  mostrar los  N  primeros numeros de la serie Fibonacci  (0,1,1,2,3,5,8,13,21)     por ejemplo que
+	// результат следуйщего числа равен сумме двух предидущих чисел.
 
 
 	Scanner sc = new Scanner(System.in);
 	System.out.print("Longitud: ");
 	int longitud = sc.nextInt();
+	int first = 0;
+	System.out.print(first);
+	int second = 1;
+	System.out.print(second);
 
-	int total = 0;
-	for(int i = 1; i < longitud; i ++)
-	{
-		System.out.print(i);
-	}
-	for (int j = 0; j < longitud; j ++)
-	{
-	    System.out.print(j);
-	}
+	int next = first + second;
+	System.out.print(next);
+
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+	System.out.print(next);
+
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+
+	System.out.print(next);
+
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+
+	System.out.print(next);
+
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+
+	System.out.print(next);
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+
+	System.out.print(next);
+	first = second;
+	// System.out.print(first);
+
+	second = next;
+	// System.out.print(second);
+
+	next = first + second;
+
+	System.out.print(next);
+
+
+	// System.out.print(first);
+	// System.out.print(second);
+	// System.out.print(next);
+
+
+
+
+// 	for(int i = 1; i < longitud; i ++)
+// 	{
+// 		total = (one + two);
+// 		two = one;
+//
+//     		System.out.print(one);
+//     		System.out.print(two);
+//             System.out.print(total);
+
 
 	}
+	// }
 
 	}

@@ -9,16 +9,19 @@ class EjerClass3{
 	//          ##
 	//          ###
 
-
 	Scanner sc = new Scanner(System.in);
-	System.out.print("Num: ");
+	System.out.print("Num of rows: ");
 	int num = sc.nextInt();
-	int times = 0;
 
-	for(int i = 0; i <= num; i++)
+	String toShow = "#";
+
+	for(int i = 0; i<=num; i++)
 	{
-	    String outt = "#";
-	    System.out.println(outt[i]);
+
+    	System.out.println(toShow);
+    	toShow = toShow + "#" ;
+
 	}
+
 	}
 }
