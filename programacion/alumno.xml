@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alumno SYSTEM "alumno.dtd"> типо dtd в другом файле //
+<alumno codigo="" ciclo="">
+    <nombre></nombre>
+    <modulo></modulo> // ну типо можно один модуль//
+    <modulo></modulo>
+
+
+#based on this dtd:
+<!ELEMENT alumno(nombre, telefono?, modulo+)>
+<!ELEMENT nombre(#PCDATA)>
+<!ELEMENT telefono(#PCDATA)>
+<!ELEMENT modulo(#PCDATA)>
+
+<!ATTLIST alumno
+    codigo CDATA #REQUIRED>
+    ciclo CDATA #REQUIRED
+    alias CDATA #IMPLIED>

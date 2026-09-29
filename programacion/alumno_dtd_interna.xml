@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alumno [
+<!ELEMENT alumno(nombre,ciclo,modulo)>
+<!ELEMENT nombre(#PCDATA)>
+<!ELEMENT ciclo(#PCDATA)>
+<!ELEMENT modulo(#PCDATA)>
+<alumno>
+    <nombre>Lucia</nombre>
+    <ciclo>3</ciclo>
+    <modulo>DAM</modulo>

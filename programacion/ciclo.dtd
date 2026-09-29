@@ -1,0 +1,4 @@
+<!ELEMENT ciclo(modulo+)>
+<!ELEMENT modulo(nombre,horas)>
+<!ELEMENT nombre(#PCDATA)>
+<!ELEMENT horas(#PCDATA)>

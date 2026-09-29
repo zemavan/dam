@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ciclo SYSTEM "ciclo.dtd">
+<ciclo>
+    <modulo>
+        <nombre>Lucia</nombre>
+        <horas>3</horas>
+    </modulo>
+    <modulo>
+        <nombre>Juan</nombre>
+        <horas>8</horas>
+    </modulo>
+</ciclo>
