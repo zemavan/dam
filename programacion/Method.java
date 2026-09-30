@@ -2,10 +2,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-class Method {
-    public static int Suma(int first,int second);
+public class Method {
+    public static int Suma(int first, int second);
 	{
-	    int result = first + second;
+		return first + second;
 
 	}
 
