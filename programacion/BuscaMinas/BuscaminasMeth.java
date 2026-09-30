@@ -2,9 +2,6 @@ import java.util.Scanner;
 import java.util.Random;
 public class BuscaminasMeth{
 
-    //поделить на два метода public row, public column
-
-
 
 public static int RowNum(){  // get num for row from user
     Scanner sc = new Scanner(System.in);
@@ -58,10 +55,25 @@ public static void LoopForMatrix(int[][] a){
         System.out.println("");
     }
 }
+public static int AskForGuessCoordinatesRow(){
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Coordinate x: ");
+    int row_guess_coordinate = sc.nextInt();
+    return row_guess_coordinate;
+
+}
+public static int AskForGuessCoordinatesColumn(){
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Coordinate y: ");
+    int column_guess_coordinate = sc.nextInt();
+
+    return column_guess_coordinate;
+
+}
 
 public static boolean SafeOrBoom(){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
-    int row_table_num = RowNum();
-    int col_table_num = ColNum();
+    int row_table_num = AskForGuessCoordinatesRow();
+    int col_table_num = AskForGuessCoordinatesColumn();
     int row_table_bomb = RandRow();
     int col_table_bomb = RandCol();
 
@@ -76,18 +88,37 @@ public static boolean SafeOrBoom(){     // check if user is safe or dead based o
     }
 
 }
+public static int [][] BombCoordinatesToShow(){ // put "1" in bomb coordinates from RandCol and RandRow into matrix
+    int row_coordinates = RandRow();
+    int col_coordinates = RandCol();
+
+    int [][] matrix_with_bomb = MatrixSize();
+
+    matrix_with_bomb[row_coordinates][col_coordinates] = 1;
+    return matrix_with_bomb;
+
+}
+
 
     public static void main(String[] arguments){
-        int [][] size = MatrixSize();
-        LoopForMatrix(size);
+        // int [][] table = MatrixSize();
+        // LoopForMatrix(table); //matrix initial table output
+
+        // AskForGuessCoordinatesRow();
+        // AskForGuessCoordinatesColumn();
+        int [][] table_with_bomb = BombCoordinatesToShow();
+        LoopForMatrix(table_with_bomb);
 
 
 
 
-        // for(int i = 0; i < size.length; i++){
-        //     for(int j = 0; j < size.length; j++){
-        //          System.out.print(size[i][j] + " ");
-        //     }
-        //     System.out.println("");
+
+
+
+
+
+
+
+
         }
     }
