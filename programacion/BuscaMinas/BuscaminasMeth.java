@@ -19,17 +19,17 @@ public static int ColNum(){ // get num for column from user
     return c_size;
  }
 
-public static int [][] MatrixSize(){ //matrix with users nums for column and row
-    int row_num = RowNum();
-    int col_num = ColNum();
+public static int [][] MatrixSize(int i_size, int c_size){ //matrix with users nums for column and row
+    int row_num = i_size;
+    int col_num = c_size;
     int [][] table = new int [row_num][col_num];
 
     return table;
 }
 
 
-public static int RandRow(){    // random row generator in size of row
-    int row_rand_pos_bomb = RowNum();
+public static int RandRow(int i_size){    // random row generator in size of row
+    int row_rand_pos_bomb = i_size;
 
     Random rand = new Random();
     int random_row = rand.nextInt(row_rand_pos_bomb);
@@ -37,8 +37,8 @@ public static int RandRow(){    // random row generator in size of row
     return random_row;
 
 }
-public static int RandCol(){    // random column generator in size of column
-    int col_rand_pos_bomb = ColNum();
+public static int RandCol(int c_size){    // random column generator in size of column
+    int col_rand_pos_bomb = c_size;
 
     Random rand = new Random();
     int random_col = rand.nextInt(col_rand_pos_bomb);
@@ -59,6 +59,7 @@ public static int AskForGuessCoordinatesRow(){
     Scanner sc = new Scanner(System.in);
     System.out.print("Coordinate x: ");
     int row_guess_coordinate = sc.nextInt();
+
     return row_guess_coordinate;
 
 }
@@ -71,51 +72,49 @@ public static int AskForGuessCoordinatesColumn(){
 
 }
 
-public static boolean SafeOrBoom(){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
+public static boolean SafeOrBoom(int row_guesser, int col_guesser){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
     int row_table_num = AskForGuessCoordinatesRow();
     int col_table_num = AskForGuessCoordinatesColumn();
-    int row_table_bomb = RandRow();
-    int col_table_bomb = RandCol();
+    int row_table_bomb = random_row;
+    int col_table_bomb = random_col;
 
     if (row_table_num == row_table_bomb && col_table_num == col_table_bomb){
         System.out.println("BOOM!");
+
         return false;
     }
     else
     {
         System.out.println("SAFE");
+
         return true;
     }
 
 }
-public static int [][] BombCoordinatesToShow(){ // put "1" in bomb coordinates from RandCol and RandRow into matrix
-    int row_coordinates = RandRow();
-    int col_coordinates = RandCol();
-
-    int [][] matrix_with_bomb = MatrixSize();
-
-    matrix_with_bomb[row_coordinates][col_coordinates] = 1;
-    return matrix_with_bomb;
+public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int random_col){ // put "1" in bomb coordinates from RandCol and RandRow into matrix
+    int row_coordinates = random_row;
+    int col_coordinates = random_col;
+    table[row_coordinates][col_coordinates] = 1;
+        return table;
 
 }
 
 
     public static void main(String[] arguments){
-        // int [][] table = MatrixSize();
-        // LoopForMatrix(table); //matrix initial table output
 
-        // AskForGuessCoordinatesRow();
-        // AskForGuessCoordinatesColumn();
-        int [][] table_with_bomb = BombCoordinatesToShow();
-        LoopForMatrix(table_with_bomb);
+        int size_row = RowNum();
+        int size_column = ColNum();
 
+        LoopForMatrix(MatrixSize(size_row,size_column));
+        AskForGuessCoordinatesRow();
+        AskForGuessCoordinatesColumn();
 
+        int rand_row = RandRow(size_row);
+        int rand_col = RandCol(size_column);
 
-
-
-
-
-
+        int[][] table = MatrixSize(size_row, size_column);
+        BombCoordinatesToShow(table, rand_row, rand_col);
+        LoopForMatrix(BombCoordinatesToShow(table, rand_row, rand_col));
 
 
 
