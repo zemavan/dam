@@ -8,7 +8,7 @@ public static int RowNum(){  // get num for row from user
     System.out.print("num of table's rows: ");
     int i_size = sc.nextInt();
 
-    return i_size;
+        return i_size;
 }
 
 public static int ColNum(){ // get num for column from user
@@ -16,7 +16,7 @@ public static int ColNum(){ // get num for column from user
     System.out.print("num of table's columns: ");
     int c_size = sc.nextInt();
 
-    return c_size;
+        return c_size;
  }
 
 public static int [][] MatrixSize(int i_size, int c_size){ //matrix with users nums for column and row
@@ -24,7 +24,7 @@ public static int [][] MatrixSize(int i_size, int c_size){ //matrix with users n
     int col_num = c_size;
     int [][] table = new int [row_num][col_num];
 
-    return table;
+        return table;
 }
 
 
@@ -34,7 +34,7 @@ public static int RandRow(int i_size){    // random row generator in size of row
     Random rand = new Random();
     int random_row = rand.nextInt(row_rand_pos_bomb);
 
-    return random_row;
+        return random_row;
 
 }
 public static int RandCol(int c_size){    // random column generator in size of column
@@ -43,7 +43,7 @@ public static int RandCol(int c_size){    // random column generator in size of 
     Random rand = new Random();
     int random_col = rand.nextInt(col_rand_pos_bomb);
 
-    return random_col;
+        return random_col;
 
 }
 public static void LoopForMatrix(int[][] a){
@@ -58,36 +58,33 @@ public static void LoopForMatrix(int[][] a){
 public static int AskForGuessCoordinatesRow(){
     Scanner sc = new Scanner(System.in);
     System.out.print("Coordinate x: ");
-    int row_guess_coordinate = sc.nextInt();
+    int row_guess_coordinate = sc.nextInt() -1;
 
-    return row_guess_coordinate;
+        return row_guess_coordinate;
 
 }
 public static int AskForGuessCoordinatesColumn(){
     Scanner sc = new Scanner(System.in);
     System.out.print("Coordinate y: ");
-    int column_guess_coordinate = sc.nextInt();
+    int column_guess_coordinate = sc.nextInt() -1;
 
-    return column_guess_coordinate;
+        return column_guess_coordinate;
 
 }
 
-public static boolean SafeOrBoom(int row_guesser, int col_guesser){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
-    int row_table_num = AskForGuessCoordinatesRow();
-    int col_table_num = AskForGuessCoordinatesColumn();
-    int row_table_bomb = random_row;
-    int col_table_bomb = random_col;
+public static boolean SafeOrBoom(int row_user_guesser, int col_user_guesser, int random_row, int random_col){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
 
-    if (row_table_num == row_table_bomb && col_table_num == col_table_bomb){
+
+    if (row_user_guesser == random_row && col_user_guesser == random_col){
         System.out.println("BOOM!");
 
-        return false;
+            return true;
     }
     else
     {
         System.out.println("SAFE");
 
-        return true;
+            return false;
     }
 
 }
@@ -95,6 +92,7 @@ public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int 
     int row_coordinates = random_row;
     int col_coordinates = random_col;
     table[row_coordinates][col_coordinates] = 1;
+
         return table;
 
 }
@@ -106,8 +104,8 @@ public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int 
         int size_column = ColNum();
 
         LoopForMatrix(MatrixSize(size_row,size_column));
-        AskForGuessCoordinatesRow();
-        AskForGuessCoordinatesColumn();
+        int user_guess_row = AskForGuessCoordinatesRow();
+        int user_guess_col = AskForGuessCoordinatesColumn();
 
         int rand_row = RandRow(size_row);
         int rand_col = RandCol(size_column);
@@ -115,6 +113,7 @@ public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int 
         int[][] table = MatrixSize(size_row, size_column);
         BombCoordinatesToShow(table, rand_row, rand_col);
         LoopForMatrix(BombCoordinatesToShow(table, rand_row, rand_col));
+        SafeOrBoom(user_guess_row, user_guess_col, rand_row, rand_col);
 
 
 
