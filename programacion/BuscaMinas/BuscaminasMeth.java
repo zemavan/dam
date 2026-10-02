@@ -99,9 +99,12 @@ public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int 
 
 
     public static void main(String[] arguments){
-
+        boolean end = false;
+        do {
         int size_row = RowNum();
         int size_column = ColNum();
+
+
 
         LoopForMatrix(MatrixSize(size_row,size_column));
         int user_guess_row = AskForGuessCoordinatesRow();
@@ -113,10 +116,8 @@ public static int [][] BombCoordinatesToShow(int[][] table, int random_row, int 
         int[][] table = MatrixSize(size_row, size_column);
         BombCoordinatesToShow(table, rand_row, rand_col);
         LoopForMatrix(BombCoordinatesToShow(table, rand_row, rand_col));
-        SafeOrBoom(user_guess_row, user_guess_col, rand_row, rand_col);
+        end = SafeOrBoom(user_guess_row, user_guess_col, rand_row, rand_col);
 
-
-
-
+        } while (end == false);
         }
     }
