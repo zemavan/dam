@@ -1,113 +1,124 @@
 import java.util.Scanner;
 import java.util.Random;
-public class BuscaminasMeth{
+public class Fichas{
 
 
 public static int rowNum(){  // get num for row from user
     Scanner sc = new Scanner(System.in);
     System.out.print("num of table's rows: ");
-    int i_size = sc.nextInt();
+    int i_size_for_gen_matrix = sc.nextInt();
 
-        return i_size;
+        return i_size_for_gen_matrix;
 }
 
 public static int colNum(){ // get num for column from user
     Scanner sc = new Scanner(System.in);
     System.out.print("num of table's columns: ");
-    int c_size = sc.nextInt();
+    int c_size_for_gen_matrix = sc.nextInt();
 
-        return c_size;
+        return c_size_for_gen_matrix;
  }
 
-public static int [][] matrixSize(int i_size, int c_size){ //matrix with users nums for column and row
-    int [][] table = new int [i_size][c_size];
-
+public static int [][] matrixSize(int i_size_for_gen_matrix, int c_size_for_gen_matrix){ //matrix with users nums for column and row
+    int [][] table = new int [i_size_for_gen_matrix][c_size_for_gen_matrix];
+    for(int i = 0; i<table.length; i++){
+        for(int j = 0; j<table[i].length; j++){
+        table[i][j] = -1;
+    }
+}
         return table;
 }
 
 
-public static int randRow(int i_size){    // random row generator in size of row
+public static int randRow(int i_size_for_gen_matrix){    // Position of random row generator in size of row
     Random rand = new Random();
-    int random_row = rand.nextInt(i_size);
+    int random_row = rand.nextInt(i_size_for_gen_matrix);
 
         return random_row;
 
 }
-public static int randCol(int c_size){    // random column generator in size of column
+public static int randCol(int c_size_for_gen_matrix){    // Position of random column generator in size of column
     Random rand = new Random();
-    int random_col = rand.nextInt(c_size);
+    int random_col = rand.nextInt(c_size_for_gen_matrix);
 
         return random_col;
 
 }
-public static void loopForMatrix(int[][] a){
-    for(int i = 0; i < a.length; i ++){
-        for(int j = 0; j < a[i].length; j ++){
-            System.out.print(a[i][j] + " ");
+public static void loopForMatrix(int[][] table){
+    for(int i = 0; i < table.length; i ++){
+        for(int j = 0; j < table[i].length; j ++){
+            System.out.print(table[i][j] + " ");
         }
         System.out.println("");
     }
 }
 public static int askForGuessCoordinatesRow(){
     Scanner sc = new Scanner(System.in);
-    System.out.print("Coordinate x: ");
-    int row_guess_coordinate = sc.nextInt() -1;
+    System.out.print("Coordinate i: ");
+    int user_row_guess_coordinate = sc.nextInt() -1;
 
-        return row_guess_coordinate;
+        return user_row_guess_coordinate;
 
 }
 public static int askForGuessCoordinatesColumn(){
     Scanner sc = new Scanner(System.in);
-    System.out.print("Coordinate y: ");
-    int column_guess_coordinate = sc.nextInt() -1;
+    System.out.print("Coordinate j: ");
+    int user_column_guess_coordinate = sc.nextInt() -1;
 
-        return column_guess_coordinate;
+        return user_column_guess_coordinate;
 
 }
 
-public static boolean safeOrBoom(int row_user_guesser, int col_user_guesser, int random_row, int random_col){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
-    if (row_user_guesser == random_row && col_user_guesser == random_col){
+public static boolean safeOrBoom(
+    int user_row_guess_coordinate, int user_col_guess_coordinate,
+    int random_row, int random_col
+    ){     // check if user is safe or dead based on choose rand nums gen and user's input for col and row
+    if (user_row_guess_coordinate == random_row && user_col_guess_coordinate == random_col){
         System.out.println("BOOM!");
-
         return true;
     }
     else
     {
         System.out.println("SAFE");
-
         return false;
+
     }
 
 }
-public static int [][] bombCoordinatesToShow(int[][] table, int random_row, int random_col, int row_guess_coordinate, int column_guess_coordinate){ // put "1" in bomb coordinates from RandCol and RandRow into matrix
-    table[random_row][random_col] = 1;
-    table[row_guess_coordinate][column_guess_coordinate] = 8;
+
+public static int [][] userTryResult(int[][] table, int random_row, int random_col, int user_row_guess_coordinate, int user_column_guess_coordinate){ // put "1" in bomb coordinates from RandCol and RandRow into matrix
+
+    if(user_row_guess_coordinate==random_row && user_column_guess_coordinate == random_col){
+        table[user_row_guess_coordinate][user_column_guess_coordinate] = 1;
         return table;
+    }
+    else{
+        table[user_row_guess_coordinate][user_column_guess_coordinate] = 0;
+        return table;
+    }
+
+
 
 }
 
-
     public static void main(String[] arguments){
         boolean end = false;
-        int size_row = rowNum();
-        int size_column = colNum();
+        int row_size = rowNum();
+        int column_size = colNum();
 
+        int rand_row_position = randRow(row_size);
+        int rand_col_position = randCol(column_size);
+
+        int[][] table = matrixSize(row_size, column_size);
         do {
-
-        loopForMatrix(matrixSize(size_row,size_column));
-        int user_guess_row = askForGuessCoordinatesRow();
-        int user_guess_col = askForGuessCoordinatesColumn();
-
-        int rand_row = randRow(size_row);
-        int rand_col = randCol(size_column);
-
-        int[][] table = matrixSize(size_row, size_column);
-        bombCoordinatesToShow(table, rand_row, rand_col, user_guess_col, user_guess_row);
-        loopForMatrix(bombCoordinatesToShow(table, rand_row, rand_col,user_guess_col,user_guess_row));
-        System.out.println("");
-        end = safeOrBoom(user_guess_row, user_guess_col, rand_row, rand_col);
-
-
+            // loopForMatrix(table);
+            int user_row_guess = askForGuessCoordinatesRow();
+            int user_column_guess = askForGuessCoordinatesColumn();
+            userTryResult(table, rand_row_position, rand_col_position, user_row_guess, user_column_guess);
+            loopForMatrix(table);
+            System.out.println("");
+            end = safeOrBoom(user_row_guess, user_column_guess, rand_row_position, rand_col_position);
+            System.out.println("");
 
         } while (end == false);
         }
