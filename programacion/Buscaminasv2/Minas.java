@@ -30,8 +30,8 @@ public class Minas{
     LoopForCharrArraySymbol(user_matrix);
     Loop(matrix);
 
-    int user_row_guess = userScanner("coordinates for i: ") - 1;
-    int user_col_guess = userScanner("coordinates for j: ") - 1;
+    int user_row_guess = userScanner("coordinates for i: ");
+    int user_col_guess = userScanner("coordinates for j: ");
 
     if(random_row_cell_position == user_row_guess && random_col_cell_position == user_col_guess){
         user_matrix[user_row_guess][user_col_guess] = '*';
@@ -42,6 +42,8 @@ public class Minas{
         System.out.println("BOOM");
     }else{
         System.out.println("SAFE");
+        System.out.println("Bomb: " + random_row_cell_position + " " + random_col_cell_position);
+        System.out.println("User: " + user_row_guess + " " + user_col_guess);
         user_matrix[user_row_guess][user_col_guess] = '+';
         Loop(user_matrix);
         Loop(matrix);
@@ -94,5 +96,6 @@ public class Minas{
         System.out.println("");
         System.out.println("");
     }
+
 
 }
